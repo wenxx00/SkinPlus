@@ -9,7 +9,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer,TfidfTransformer
 from collections import Counter
 
 #read data
-# rec_data = pd.read_excel('data_2.xlsx')
 rec_data = pd.read_csv('recom_data_df.csv',encoding='gb18030')
 rec_data.head(1)
 len(rec_data)
@@ -23,8 +22,6 @@ infos = list(rec_data.product_info)
 len(infos)
 #remove stopwords
 corpus = [' '.join([tm for tm in info.split() if tm not in stopwords]) for info in infos]
-info =infos[3957]
-corpus[3957]
 vectorizer = CountVectorizer(min_df=1000,stop_words='english')
 # vectorizer = CountVectorizer(min_df=1000,stop_words=stopwords)
 vect_count = vectorizer.fit_transform(corpus).toarray()
